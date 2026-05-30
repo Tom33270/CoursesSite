@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import { categories } from "../data/products";
+import styles from "../styles/courses.module.css";
 
 export default function Courses() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -9,42 +10,21 @@ export default function Courses() {
     <>
       <Header />
 
-      <div style={{ maxWidth: "90%", margin: "0 auto", padding: "1rem" }}>
-        <h1>Liste de courses</h1>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Liste de courses</h1>
 
         {/* Affichage des catégories */}
         {!selectedCategory && (
-          <div style={{
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
-    gap: "1rem",
-  }}>
+          <div className={styles.categoryGrid}>
             {categories.map((cat, index) => (
-             <div
-  key={index}
-  className="card"
-  style={{
-    cursor: "pointer",
-    textAlign: "center",
-    padding: "2rem 1rem",
-    height: "200px",
-    width:"200px",
-    borderRadius: "10px",
-    backgroundImage: `url(${cat.image})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    color: "beige",
-    fontWeight: "bold",
-    textShadow: "0 2px 4px rgba(0, 0, 0, 0.7)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  }}
-  onClick={() => setSelectedCategory(cat)}
->
-  {cat.name}
-</div>
-
+              <div
+                key={index}
+                className={styles.categoryCard}
+                style={{ backgroundImage: `url(${cat.image})` }}
+                onClick={() => setSelectedCategory(cat)}
+              >
+                {cat.name}
+              </div>
             ))}
           </div>
         )}
@@ -52,47 +32,25 @@ export default function Courses() {
         {/* Affichage des produits d'une catégorie */}
         {selectedCategory && (
           <>
-            <button onClick={() => setSelectedCategory(null)}>
+            <button
+              className={styles.backButton}
+              onClick={() => setSelectedCategory(null)}
+            >
               ← Retour
             </button>
 
-            <h2>{selectedCategory.name}</h2>
+            <h2 className={styles.categoryTitle}>{selectedCategory.name}</h2>
 
-            <ul
-  style={{
-    listStyle: "none",
-    padding: 0,
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
-    gap: "1rem"
-  }}
->
+            <ul className={styles.itemGrid}>
               {selectedCategory.items.map((item, index) => (
- <li
-  key={index}
-  className="card"
-  style={{
-    marginBottom: "1rem",
-    padding: "2rem 1rem",
-    borderRadius: "10px",
-    backgroundImage: `url(${item.image})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    color: "beige",
-    fontWeight: "bold",
-    textShadow: "0 2px 4px rgba(0,0,0,0.7)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "100px",
-    width:"100px"
-  }}
->
-  {item.nom}
-</li>
-
-))}
-
+                <li
+                  key={index}
+                  className={styles.itemCard}
+                  style={{ backgroundImage: `url(${item.image})` }}
+                >
+                  {item.nom}
+                </li>
+              ))}
             </ul>
           </>
         )}

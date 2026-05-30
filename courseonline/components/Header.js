@@ -1,6 +1,10 @@
 import Link from "next/link";
+import { useState } from "react";
+import styles from "../styles/header.module.css";
 
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const links = [
     { label: "Courses", href: "/courses" },
     { label: "Historique", href: "/history" },
@@ -8,24 +12,28 @@ export default function Header() {
   ];
 
   return (
-    <header
-      style={{
-        padding: "1rem",
-        background: "#f5f5f5",
-        borderBottom: "1px solid #ddd",
-        marginBottom: "2rem",
-      }}
-    >
-      <nav
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "2rem",
-          fontSize: "1.1rem",
-        }}
+    <header className={styles.header}>
+      {/* Logo / titre */}
+      <div className={styles.logo}>🛒 Ma Course</div>
+
+      {/* Burger button (mobile uniquement) */}
+      <button
+        className={styles.burger}
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Menu"
       >
+        {menuOpen ? "✕" : "☰"}
+      </button>
+
+      {/* Nav links */}
+      <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`}>
         {links.map((link, index) => (
-          <Link key={index} href={link.href}>
+          <Link
+            key={index}
+            href={link.href}
+            className={styles.link}
+            onClick={() => setMenuOpen(false)}
+          >
             {link.label}
           </Link>
         ))}
