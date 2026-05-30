@@ -1,0 +1,96 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap');
+
+:root {
+  --bg: #F7F3EB;
+  --card: #FFF9F3;
+  --accent: #D9A7A0;
+  --accent-dark: #B07C75;
+  --text: #4A3F35;
+  --text-light: #7A6E63;
+  --border: #E6D8C8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  padding: 1rem;
+}
+
+/* Titres vintage */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+/* Liens */
+a {
+  color: var(--accent-dark);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+/* Boutons vintage pastel */
+button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+button:hover {
+  background: var(--accent-dark);
+}
+
+/* Inputs */
+input {
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+}
+
+/* Cartes vintage */
+.card {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+  margin-bottom: 1rem;
+}
+
+/* Header vintage pastel */
+header {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+nav a {
+  margin: 0 1rem;
+  font-weight: 600;
+}
